@@ -20,38 +20,57 @@ const botChoiceRandomizer = function () {
 };
 
 const winner = function (userVal, botVal) {
-  let userWinner;
-  if (userVal === 1 && botVal === 2) {
-    userWinner = false;
+  let winner;
+  if (userVal === 1 && botVal === 1) {
+    winner = 3;
+  } else if (userVal === 1 && botVal === 2) {
+    winner = 2;
   } else if (userVal === 1 && botVal === 3) {
-    userWinner = true;
+    winner = 1;
   } else if (userVal === 2 && botVal === 1) {
-    userWinner = true;
+    winner = 1;
+  } else if (userVal === 2 && botVal === 2) {
+    winner = 3;
   } else if (userVal === 2 && botVal === 3) {
-    userWinner = false;
+    winner = 2;
   } else if (userVal === 3 && botVal === 1) {
-    userWinner = false;
+    winner = 2;
   } else if (userVal === 3 && botVal === 2) {
-    userWinner = true; //====================
+    winner = 1;
+  } else if (userVal === 3 && botVal === 3) {
+    winner = 3;
   }
   //   return userPoint > botPoint ? userPoint : botPoint;
-  return userWinner;
+  return winner;
 };
 
 console.log(botRandomNumber);
+
 rock.addEventListener('click', () => {
   document.querySelector('.itemSelected').src = 'assets/rock.png';
   userNumber = 1;
   botChoiceRandomizer();
   let win = winner(userNumber, botRandomNumber);
-  if (typeof win !== 'undefined') {
-    document.querySelector('.vs').textContent = 'D';
-
-    if (win) {
-      document.querySelector('.vs').textContent = '1';
-    } else {
-      document.querySelector('.vs').textContent = '2';
-    }
+  if (win === 3) {
+    document.querySelector('.won').textContent = 'Draw';
+    document.querySelector('.won').style.color = 'purple';
+  } else if (win === 1) {
+    document.querySelector('.won').textContent = 'You won!';
+    document.querySelector('.won').style.color = 'green';
+    userPoint++;
+    document.querySelector('.humanPoints').textContent = userPoint;
+  } else if (win === 2) {
+    document.querySelector('.won').textContent = 'Computer won!';
+    document.querySelector('.won').style.color = 'red';
+    botPoint++;
+    document.querySelector('.botPoints').textContent = botPoint;
+  }
+  if (userPoint >= 10) {
+    document.querySelector('body ').style.backgroundColor = 'green';
+    document.querySelector('body ').style.color = 'black';
+  } else if (botPoint >= 10) {
+    document.querySelector('body ').style.backgroundColor = 'red';
+    document.querySelector('body ').style.color = 'black';
   }
 });
 
@@ -60,14 +79,26 @@ paper.addEventListener('click', () => {
   userNumber = 2;
   botChoiceRandomizer();
   let win = winner(userNumber, botRandomNumber);
-  if (typeof win !== 'undefined') {
-    document.querySelector('.vs').textContent = 'D';
-
-    if (win) {
-      document.querySelector('.vs').textContent = '1';
-    } else {
-      document.querySelector('.vs').textContent = '2';
-    }
+  if (win === 3) {
+    document.querySelector('.won').textContent = 'Draw';
+    document.querySelector('.won').style.color = 'purple';
+  } else if (win === 1) {
+    document.querySelector('.won').textContent = 'You won!';
+    document.querySelector('.won').style.color = 'green';
+    userPoint++;
+    document.querySelector('.humanPoints').textContent = userPoint;
+  } else if (win === 2) {
+    document.querySelector('.won').textContent = 'Computer won!';
+    document.querySelector('.won').style.color = 'red';
+    botPoint++;
+    document.querySelector('.botPoints').textContent = botPoint;
+  }
+  if (userPoint >= 10) {
+    document.querySelector('body ').style.backgroundColor = 'green';
+    document.querySelector('body ').style.color = 'black';
+  } else if (botPoint >= 10) {
+    document.querySelector('body ').style.backgroundColor = '#e45745';
+    document.querySelector('body ').style.color = 'black';
   }
 });
 
@@ -76,13 +107,25 @@ scissor.addEventListener('click', () => {
   userNumber = 3;
   botChoiceRandomizer();
   let win = winner(userNumber, botRandomNumber);
-  if (typeof win !== 'undefined') {
-    document.querySelector('.vs').textContent = 'D';
-
-    if (win) {
-      document.querySelector('.vs').textContent = '1';
-    } else {
-      document.querySelector('.vs').textContent = '2';
-    }
+  if (win === 3) {
+    document.querySelector('.won').textContent = 'Draw';
+    document.querySelector('.won').style.color = 'purple';
+  } else if (win === 1) {
+    document.querySelector('.won').textContent = 'You won!';
+    document.querySelector('.won').style.color = 'green';
+    userPoint++;
+    document.querySelector('.humanPoints').textContent = userPoint;
+  } else if (win === 2) {
+    document.querySelector('.won').textContent = 'Computer won!';
+    document.querySelector('.won').style.color = '#e45745';
+    botPoint++;
+    document.querySelector('.botPoints').textContent = botPoint;
+  }
+  if (userPoint >= 10) {
+    document.querySelector('body ').style.backgroundColor = 'green';
+    document.querySelector('body ').style.color = 'black';
+  } else if (botPoint >= 10) {
+    document.querySelector('body ').style.backgroundColor = '#e45745';
+    document.querySelector('body ').style.color = 'black';
   }
 });
