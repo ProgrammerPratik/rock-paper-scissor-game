@@ -6,7 +6,6 @@ let paper = document.querySelector('.paper');
 let scissor = document.querySelector('.scissor');
 let userNumber = 0;
 let botRandomNumber = 0;
-let botNumber = 0;
 
 const botChoiceRandomizer = function () {
   botRandomNumber = Math.trunc(Math.random() * 3) + 1;
